@@ -1,0 +1,558 @@
+/* =========================================================
+   PROFILE PAGE
+========================================================= */
+
+.profile-page {
+  width: 100%;
+  padding-bottom: 95px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.profile-header {
+  margin-bottom: 25px;
+}
+
+.profile-label {
+  margin: 0 0 6px;
+  color: #1e2761;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+}
+
+.profile-header h1 {
+  margin: 0;
+  color: #1e2761;
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.profile-header p {
+  margin: 7px 0 0;
+  color: #60677d;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   MAIN PROFILE CARD
+========================================================= */
+
+.profile-main-card {
+  display: grid;
+  grid-template-columns: 0.75fr 1.25fr;
+  gap: 25px;
+  padding: 25px;
+
+  background: #ffffff;
+  border: 1px solid #e2e5ed;
+  border-radius: 22px;
+
+  box-shadow:
+    0 10px 28px rgba(30, 39, 97, 0.10);
+}
+
+
+/* =========================================================
+   WORKER IMAGE SECTION
+========================================================= */
+
+.profile-image-section {
+  min-height: 390px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+
+  background: #f7f8fc;
+  border-radius: 18px;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   WORKER IMAGE AREA
+========================================================= */
+
+.profile-worker-animation {
+  width: 230px;
+  height: 230px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 12px;
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   WORKER IMAGE
+   220px × 220px
+========================================================= */
+
+.profile-worker-image {
+  width: 220px;
+  height: 220px;
+
+  object-fit: contain;
+
+  display: block;
+
+  background: transparent;
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  /* Hide unwanted marks at top and bottom */
+  clip-path: inset(7% 0 7% 0);
+
+  animation: workerPoseAppear 0.4s ease-in-out;
+}
+
+
+/* =========================================================
+   ONE-TIME WORKER POSE ANIMATION
+========================================================= */
+
+@keyframes workerPoseAppear {
+
+  from {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+/* =========================================================
+   WORKER NAME
+========================================================= */
+
+.profile-image-section h2 {
+  margin: 5px 0;
+
+  color: #1e2761;
+
+  font-size: 27px;
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+
+/* =========================================================
+   WORKER ROLE
+========================================================= */
+
+.profile-role {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #626a82;
+
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   ACTIVE STATUS
+========================================================= */
+
+.profile-active-status {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 6px;
+
+  margin-top: 11px;
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  background: #e9f8ef;
+  color: #21864e;
+
+  font-size: 13px;
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   WORKER INFORMATION
+========================================================= */
+
+.profile-information {
+  padding: 5px;
+}
+
+.profile-information h3 {
+  margin: 0 0 16px;
+
+  color: #1e2761;
+
+  font-size: 22px;
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   INFORMATION ITEM
+========================================================= */
+
+.profile-info-item {
+  min-height: 60px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 8px 11px;
+  margin-bottom: 9px;
+
+  background: #f8f9fc;
+
+  border: 1px solid #e8eaf0;
+  border-radius: 12px;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.profile-info-item:hover {
+  transform: translateX(3px);
+
+  box-shadow:
+    0 5px 14px rgba(30, 39, 97, 0.08);
+}
+
+
+/* =========================================================
+   INFORMATION ICON
+========================================================= */
+
+.profile-info-icon {
+  width: 40px;
+  height: 40px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #1e2761;
+  color: #ffd700;
+}
+
+
+/* =========================================================
+   INFORMATION TEXT
+========================================================= */
+
+.profile-info-item span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #747c92;
+
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.profile-info-item strong {
+  display: block;
+
+  color: #20264f;
+
+  font-size: 15px;
+  font-weight: 750;
+
+  line-height: 1.3;
+
+  word-break: break-word;
+}
+
+
+/* =========================================================
+   WORK SUMMARY
+========================================================= */
+
+.profile-summary {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+
+  margin-top: 18px;
+}
+
+
+/* =========================================================
+   SUMMARY CARD
+========================================================= */
+
+.profile-summary-card {
+  min-height: 105px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff;
+
+  border: 1px solid #e3e6ee;
+  border-radius: 16px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.profile-summary-card:hover {
+  transform: translateY(-4px);
+}
+
+
+/* =========================================================
+   ASSIGNED TASKS
+========================================================= */
+
+.assigned-card {
+  border-top: 4px solid #1e2761;
+
+  box-shadow:
+    0 8px 22px rgba(30, 39, 97, 0.16);
+}
+
+.assigned-card strong {
+  color: #1e2761;
+}
+
+
+/* =========================================================
+   COMPLETED TASKS
+========================================================= */
+
+.completed-card {
+  border-top: 4px solid #22a06b;
+
+  box-shadow:
+    0 8px 22px rgba(34, 160, 107, 0.17);
+}
+
+.completed-card strong {
+  color: #22a06b;
+}
+
+
+/* =========================================================
+   COMPLETION RATE
+========================================================= */
+
+.progress-card {
+  border-top: 4px solid #ffd700;
+
+  box-shadow:
+    0 8px 22px rgba(255, 215, 0, 0.20);
+}
+
+.progress-card strong {
+  color: #c49a00;
+}
+
+
+/* =========================================================
+   SUMMARY NUMBERS
+========================================================= */
+
+.profile-summary-card strong {
+  font-size: 29px;
+
+  font-weight: 800;
+
+  line-height: 1;
+}
+
+
+/* =========================================================
+   SUMMARY LABELS
+========================================================= */
+
+.profile-summary-card span {
+  margin-top: 7px;
+
+  color: #6f768b;
+
+  font-size: 13px;
+  font-weight: 650;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .profile-main-card {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-image-section {
+    min-height: 330px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .profile-page {
+    padding-bottom: 100px;
+  }
+
+  .profile-header {
+    margin-bottom: 18px;
+  }
+
+  .profile-header h1 {
+    font-size: 30px;
+  }
+
+  .profile-header p {
+    font-size: 14px;
+  }
+
+  .profile-main-card {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+
+    padding: 16px;
+
+    border-radius: 18px;
+  }
+
+  .profile-image-section {
+    min-height: 330px;
+
+    padding: 18px;
+
+    border-radius: 15px;
+  }
+
+
+  /* Worker image */
+
+  .profile-worker-animation {
+    width: 230px;
+    height: 230px;
+  }
+
+  .profile-worker-image {
+    width: 220px;
+    height: 220px;
+  }
+
+
+  .profile-image-section h2 {
+    font-size: 24px;
+  }
+
+  .profile-role {
+    font-size: 14px;
+  }
+
+  .profile-active-status {
+    font-size: 12px;
+  }
+
+  .profile-information h3 {
+    font-size: 20px;
+  }
+
+  .profile-info-item {
+    min-height: 56px;
+  }
+
+  .profile-info-item strong {
+    font-size: 14px;
+  }
+
+
+  .profile-summary {
+    grid-template-columns: 1fr;
+
+    gap: 11px;
+  }
+
+  .profile-summary-card {
+    min-height: 88px;
+  }
+
+  .profile-summary-card strong {
+    font-size: 26px;
+  }
+}
+
+
+/* =========================================================
+   SMALL PHONE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .profile-worker-animation {
+    width: 210px;
+    height: 210px;
+  }
+
+  .profile-worker-image {
+    width: 200px;
+    height: 200px;
+  }
+
+  .profile-image-section h2 {
+    font-size: 22px;
+  }
+
+  .profile-info-item strong {
+    font-size: 13px;
+  }
+}
