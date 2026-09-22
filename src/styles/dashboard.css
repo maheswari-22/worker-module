@@ -1,3 +1,4 @@
+
 /* =========================================================
    CIVICCONNECT WORKER DASHBOARD
    ========================================================= */
@@ -122,6 +123,12 @@
    WORKER HERO
    ========================================================= */
 
+/*
+   IMPORTANT:
+   This hero is a NORMAL section.
+   It does NOT move with Framer Motion.
+*/
+
 .worker-hero {
   position: relative;
 
@@ -129,13 +136,15 @@
   align-items: center;
   justify-content: space-between;
 
-  min-height: 330px;
+  /* SLIGHTLY INCREASED HERO */
+  height: 280px;
+  min-height: 280px;
 
   overflow: hidden;
 
-  padding: 34px 40px;
+  padding: 20px 32px;
 
-  border-radius: 28px;
+  border-radius: 24px;
 
   background:
     radial-gradient(
@@ -151,8 +160,11 @@
     );
 
   box-shadow:
-    0 25px 60px rgba(16, 23, 70, 0.18);
+    0 20px 45px rgba(16, 23, 70, 0.18);
 }
+
+
+/* Decorative circle */
 
 .worker-hero::before {
   content: "";
@@ -172,6 +184,9 @@
   pointer-events: none;
 }
 
+
+/* Decorative gold circle */
+
 .worker-hero::after {
   content: "";
 
@@ -190,8 +205,14 @@
   pointer-events: none;
 }
 
+
+/* =========================================================
+   HERO CONTENT
+   ========================================================= */
+
 .hero-content {
   position: relative;
+
   z-index: 3;
 
   max-width: 520px;
@@ -203,7 +224,7 @@
 
   gap: 7px;
 
-  padding: 8px 13px;
+  padding: 7px 12px;
 
   border: 1px solid rgba(255, 215, 0, 0.2);
   border-radius: 50px;
@@ -212,7 +233,7 @@
 
   color: #ffe98a;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 
   letter-spacing: 0.5px;
@@ -232,11 +253,11 @@
 }
 
 .hero-content h2 {
-  margin: 18px 0 13px;
+  margin: 14px 0 10px;
 
   color: white;
 
-  font-size: clamp(30px, 4vw, 44px);
+  font-size: clamp(28px, 3.5vw, 40px);
   line-height: 1.08;
   font-weight: 500;
 
@@ -252,12 +273,12 @@
 .hero-content p {
   max-width: 470px;
 
-  margin: 0 0 22px;
+  margin: 0 0 18px;
 
   color: rgba(255, 255, 255, 0.72);
 
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 
@@ -272,7 +293,7 @@
 
   gap: 9px;
 
-  padding: 13px 19px;
+  padding: 12px 18px;
 
   border: none;
   border-radius: 12px;
@@ -310,6 +331,7 @@
 
 .worker-container {
   position: relative;
+
   z-index: 3;
 
   flex: 1;
@@ -318,7 +340,7 @@
   align-items: center;
   justify-content: center;
 
-  min-width: 280px;
+  min-width: 220px;
 }
 
 .worker-ready-animation {
@@ -329,14 +351,25 @@
   justify-content: center;
 
   width: 100%;
-  min-height: 300px;
+
+  /* SLIGHTLY INCREASED */
+  min-height: 250px;
 }
+
+
+/*
+   IMPORTANT:
+   Only the worker image moves.
+   The hero box itself does NOT move.
+*/
 
 .worker-ready-image {
   position: relative;
+
   z-index: 2;
 
-  width: min(230px, 55vw);
+  width: min(185px, 45vw);
+
   height: auto;
 
   object-fit: contain;
@@ -345,14 +378,18 @@
     workerReadyFloat 2.8s ease-in-out 1.8s infinite;
 }
 
+
+/* Gold glow under worker */
+
 .worker-ready-glow {
   position: absolute;
+
   z-index: 1;
 
-  bottom: 12px;
+  bottom: 8px;
 
-  width: 170px;
-  height: 35px;
+  width: 150px;
+  height: 30px;
 
   border-radius: 50%;
 
@@ -364,7 +401,11 @@
     workerReadyGlow 2.8s ease-in-out 1.8s infinite;
 }
 
+
+/* Worker floating animation */
+
 @keyframes workerReadyFloat {
+
   0%,
   100% {
     transform: translateY(0);
@@ -373,19 +414,27 @@
   50% {
     transform: translateY(-3px);
   }
+
 }
 
+
+/* Glow animation */
+
 @keyframes workerReadyGlow {
+
   0%,
   100% {
     opacity: 0.45;
+
     transform: scaleX(1);
   }
 
   50% {
     opacity: 0.7;
+
     transform: scaleX(0.92);
   }
+
 }
 
 
@@ -446,16 +495,19 @@
 
 .stat-card.blue .stat-icon {
   background: rgba(30, 39, 97, 0.09);
+
   color: #1e2761;
 }
 
 .stat-card.green .stat-icon {
   background: rgba(40, 167, 120, 0.1);
+
   color: #24966b;
 }
 
 .stat-card.gold .stat-icon {
   background: rgba(255, 215, 0, 0.14);
+
   color: #c49c00;
 }
 
@@ -501,6 +553,7 @@
 .glass-card,
 .progress-card {
   border: 1px solid rgba(30, 39, 97, 0.07);
+
   border-radius: 20px;
 
   background: white;
@@ -717,6 +770,7 @@
 
 .quick-arrow {
   position: relative;
+
   z-index: 2;
 
   margin-left: auto;
@@ -731,6 +785,7 @@
   flex-shrink: 0;
 
   border: 1px solid rgba(255, 255, 255, 0.12);
+
   border-radius: 10px;
 
   background: rgba(255, 255, 255, 0.06);
@@ -826,6 +881,7 @@
   padding: 15px 16px;
 
   border: 1px solid rgba(30, 39, 97, 0.07);
+
   border-radius: 15px;
 
   background: white;
@@ -927,13 +983,19 @@
 
 
 /* =========================================================
-   DESKTOP SIDEBAR
+   DESKTOP
    ========================================================= */
 
 @media (min-width: 901px) {
 
   .app-shell {
     margin-left: 250px;
+
+    transition: margin-left 0.3s ease;
+  }
+
+  body.sidebar-is-collapsed .app-shell {
+    margin-left: 76px;
   }
 
   .app-container {
@@ -948,6 +1010,7 @@
     padding-left: 28px;
     padding-right: 28px;
   }
+
 }
 
 
@@ -959,6 +1022,8 @@
 
   .app-shell {
     margin-left: 76px;
+
+    transition: margin-left 0.3s ease;
   }
 
   .page-content {
@@ -967,16 +1032,29 @@
   }
 
   .worker-hero {
-    padding: 30px;
+    height: 210px;
+
+    min-height: 210px;
+
+    padding: 18px 26px;
   }
 
   .worker-container {
-    min-width: 220px;
+    min-width: 190px;
+  }
+
+  .worker-ready-animation {
+    min-height: 195px;
+  }
+
+  .worker-ready-image {
+    width: 165px;
   }
 
   .stats-grid {
     gap: 10px;
   }
+
 }
 
 
@@ -993,6 +1071,7 @@
   .page-content {
     padding-left: 14px;
     padding-right: 14px;
+
     padding-bottom: 90px;
   }
 
@@ -1021,19 +1100,30 @@
     height: 40px;
   }
 
+
+  /* =====================================================
+     MOBILE HERO
+     ===================================================== */
+
   .worker-hero {
     flex-direction: column;
 
-    align-items: stretch;
+    align-items: center;
 
-    min-height: auto;
+    justify-content: flex-start;
 
-    padding: 26px 20px 10px;
+    height: auto;
 
-    border-radius: 24px;
+    min-height: 0;
+
+    padding: 20px 17px 0;
+
+    border-radius: 22px;
   }
 
   .hero-content {
+    width: 100%;
+
     max-width: none;
 
     text-align: center;
@@ -1041,43 +1131,66 @@
 
   .hero-badge {
     font-size: 10px;
+
+    padding: 6px 11px;
   }
 
   .hero-content h2 {
-    font-size: 29px;
+    font-size: 28px;
+
+    margin-top: 12px;
+
+    margin-bottom: 8px;
   }
 
   .hero-content p {
-    font-size: 13px;
+    max-width: 400px;
+
+    font-size: 12.5px;
 
     margin-left: auto;
     margin-right: auto;
+
+    margin-bottom: 14px;
   }
 
   .primary-button {
     width: 100%;
 
-    font-size: 13px;
+    font-size: 12.5px;
+
+    padding: 11px 16px;
   }
 
+
+  /* Worker */
+
   .worker-container {
+    width: 100%;
+
     min-width: 0;
 
-    margin-top: 5px;
+    margin-top: 0;
   }
 
   .worker-ready-animation {
-    min-height: 240px;
+    min-height: 185px;
   }
 
   .worker-ready-image {
-    width: min(190px, 55vw);
+    width: min(165px, 50vw);
   }
 
   .worker-ready-glow {
-    width: 140px;
-    height: 30px;
+    width: 130px;
+
+    height: 28px;
+
+    bottom: 7px;
   }
+
+
+  /* Statistics */
 
   .stats-grid {
     grid-template-columns: 1fr;
@@ -1096,6 +1209,9 @@
   .stat-info strong {
     font-size: 25px;
   }
+
+
+  /* Dashboard cards */
 
   .dashboard-grid {
     grid-template-columns: 1fr;
@@ -1135,6 +1251,9 @@
     font-size: 12px;
   }
 
+
+  /* Next task */
+
   .quick-card {
     padding: 18px;
   }
@@ -1146,6 +1265,9 @@
   .quick-card > div:nth-child(2) > p:last-child {
     font-size: 12px;
   }
+
+
+  /* Recent tasks */
 
   .section-header {
     align-items: flex-end;
@@ -1165,6 +1287,7 @@
 
   .recent-task {
     padding: 13px;
+
     gap: 9px;
   }
 
@@ -1183,6 +1306,7 @@
   .task-arrow {
     display: none;
   }
+
 }
 
 
@@ -1194,20 +1318,26 @@
 
   .page-content {
     padding-left: 11px;
+
     padding-right: 11px;
   }
 
   .worker-hero {
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 15px;
+
+    padding-right: 15px;
   }
 
   .hero-content h2 {
-    font-size: 26px;
+    font-size: 25px;
+  }
+
+  .worker-ready-animation {
+    min-height: 170px;
   }
 
   .worker-ready-image {
-    width: 170px;
+    width: 155px;
   }
 
   .stat-info strong {
@@ -1217,4 +1347,6 @@
   .section-title {
     font-size: 18px;
   }
+
 }
+

@@ -15,11 +15,16 @@ function App() {
       <Routes>
 
         {/* =====================================================
-            LOGIN PAGE - FIRST PAGE
+            LOGIN PAGE
             ===================================================== */}
 
         <Route
           path="/"
+          element={<Login />}
+        />
+
+        <Route
+          path="/worker/login"
           element={<Login />}
         />
 
@@ -38,8 +43,15 @@ function App() {
             DASHBOARD
             ===================================================== */}
 
+        {/* Existing route */}
         <Route
           path="/dashboard"
+          element={<Dashboard />}
+        />
+
+        {/* Worker route used by Login */}
+        <Route
+          path="/worker/dashboard"
           element={<Dashboard />}
         />
 
@@ -48,8 +60,15 @@ function App() {
             ASSIGNED TASKS
             ===================================================== */}
 
+        {/* Existing route */}
         <Route
           path="/assigned-tasks"
+          element={<AssignedTasks />}
+        />
+
+        {/* Worker route */}
+        <Route
+          path="/worker/assigned-tasks"
           element={<AssignedTasks />}
         />
 
@@ -58,8 +77,15 @@ function App() {
             TASK DETAILS
             ===================================================== */}
 
+        {/* Existing route */}
         <Route
           path="/task-details"
+          element={<TaskDetails />}
+        />
+
+        {/* Worker route */}
+        <Route
+          path="/worker/task-details"
           element={<TaskDetails />}
         />
 
@@ -68,8 +94,15 @@ function App() {
             HISTORY
             ===================================================== */}
 
+        {/* Existing route */}
         <Route
           path="/history"
+          element={<History />}
+        />
+
+        {/* Worker route */}
+        <Route
+          path="/worker/history"
           element={<History />}
         />
 
@@ -78,8 +111,15 @@ function App() {
             PROFILE
             ===================================================== */}
 
+        {/* Existing route */}
         <Route
           path="/profile"
+          element={<Profile />}
+        />
+
+        {/* Worker route */}
+        <Route
+          path="/worker/profile"
           element={<Profile />}
         />
 
