@@ -60,7 +60,7 @@ function Welcome() {
           </h1>
 
           <p className="welcome-description">
-            Ready to make a difference in your community?
+            Your work today shapes a better tomorrow
           </p>
 
           <div className="welcome-line">
