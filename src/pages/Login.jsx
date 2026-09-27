@@ -336,7 +336,7 @@ function Login() {
 
                 <p className="login-subtitle forgot-subtitle">
                   Don't worry. Enter your registered username
-                  or email and we'll help you reset your password.
+                  or email and we will help you reset your password.
                 </p>
 
                 {formError && (
