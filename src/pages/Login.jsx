@@ -83,9 +83,6 @@ function Login() {
     setIsSubmitting(true);
 
     setTimeout(() => {
-      // Get saved password from localStorage.
-      // If no password has been saved yet,
-      // use the default worker password.
       const savedPassword =
         localStorage.getItem("workerPassword");
 
@@ -96,27 +93,64 @@ function Login() {
         loginForm.username === "worker" &&
         loginForm.password === validPassword
       ) {
-        // Save password if this is the first/default login.
         localStorage.setItem(
           "workerPassword",
           loginForm.password
         );
 
-        // Save worker details for Profile page
+        // Keep the previously saved worker name/details.
+        // This prevents normal Login from replacing
+        // the Sign Up name with "CivicConnect Worker".
+        const existingAccount =
+          localStorage.getItem("workerAccount");
+
+        let account = null;
+
+        if (existingAccount) {
+          try {
+            account = JSON.parse(existingAccount);
+          } catch (error) {
+            account = null;
+          }
+        }
+
         localStorage.setItem(
           "workerAccount",
           JSON.stringify({
-            name: "CivicConnect Worker",
-            username: "worker",
-            email: "worker@civicconnect.com",
-            phone: "+91 98765 43210",
-            area: "Visakhapatnam",
-            workerId: "CW-1025",
-            department: "Municipal Services",
+            name:
+              account?.name ||
+              "CivicConnect Worker",
+
+            username:
+              account?.username ||
+              loginForm.username,
+
+            email:
+              account?.email ||
+              "worker@civicconnect.com",
+
+            phone:
+              account?.phone ||
+              "+91 98765 43210",
+
+            area:
+              account?.area ||
+              "Visakhapatnam",
+
+            workerId:
+              account?.workerId ||
+              "CW-1025",
+
+            department:
+              account?.department ||
+              "Municipal Services",
           })
         );
 
-        localStorage.setItem("workerLoggedIn", "true");
+        localStorage.setItem(
+          "workerLoggedIn",
+          "true"
+        );
 
         if (loginForm.remember) {
           localStorage.setItem(
@@ -202,14 +236,12 @@ function Login() {
     setIsSubmitting(true);
 
     setTimeout(() => {
-      // Save signup password for Login and
-      // Change Password functionality.
       localStorage.setItem(
         "workerPassword",
         signupForm.password
       );
 
-      // Save signup details for Profile page
+      // Save the exact name entered during Sign Up.
       localStorage.setItem(
         "workerAccount",
         JSON.stringify({
@@ -232,9 +264,6 @@ function Login() {
         "true"
       );
 
-      // Changed:
-      // Signup now goes to Welcome first,
-      // just like normal Login.
       navigate("/welcome");
     }, 800);
   };

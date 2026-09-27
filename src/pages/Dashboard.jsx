@@ -22,8 +22,30 @@ function Dashboard() {
   const navigate = useNavigate();
 
   const [greeting, setGreeting] = useState("");
+  const [workerName, setWorkerName] = useState("Worker");
 
   useEffect(() => {
+    const savedAccount =
+      localStorage.getItem("workerAccount");
+
+    if (savedAccount) {
+      try {
+        const account = JSON.parse(savedAccount);
+
+        setWorkerName(
+          account.name ||
+          account.fullName ||
+          account.username ||
+          "Worker"
+        );
+      } catch (error) {
+        console.error(
+          "Unable to load worker details:",
+          error
+        );
+      }
+    }
+
     const hour = new Date().getHours();
 
     if (hour < 12) {
@@ -92,8 +114,7 @@ function Dashboard() {
                   </p>
 
                   <h1>
-                    {greeting}
-                    
+                    {greeting}, {workerName}
                   </h1>
 
                   <p className="dashboard-subtitle">
@@ -146,7 +167,9 @@ function Dashboard() {
 
                   <button
                     className="primary-button gold-button"
-                    onClick={() => navigate("/assigned-tasks")}
+                    onClick={() =>
+                      navigate("/assigned-tasks")
+                    }
                   >
                     View Assigned Tasks
                     <ArrowRight size={17} />
@@ -176,7 +199,10 @@ function Dashboard() {
                   className="stat-card blue"
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.1,
+                  }}
                   whileHover={{ y: -4 }}
                 >
 
@@ -200,7 +226,10 @@ function Dashboard() {
                   className="stat-card green"
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.2 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.2,
+                  }}
                   whileHover={{ y: -4 }}
                 >
 
@@ -224,7 +253,10 @@ function Dashboard() {
                   className="stat-card gold"
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.3 }}
+                  transition={{
+                    duration: 0.4,
+                    delay: 0.3,
+                  }}
                   whileHover={{ y: -4 }}
                 >
 
@@ -259,7 +291,10 @@ function Dashboard() {
                   className="progress-card"
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.35 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.35,
+                  }}
                 >
 
                   <div className="card-heading">
@@ -341,7 +376,10 @@ function Dashboard() {
                   className="quick-card"
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.45 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: 0.45,
+                  }}
                 >
 
                   <div className="quick-icon">
@@ -369,7 +407,9 @@ function Dashboard() {
                   <button
                     className="quick-arrow"
                     type="button"
-                    onClick={() => navigate("/task-details")}
+                    onClick={() =>
+                      navigate("/task-details")
+                    }
                   >
                     <ArrowRight size={18} />
                   </button>
@@ -404,7 +444,9 @@ function Dashboard() {
                   <button
                     className="view-all"
                     type="button"
-                    onClick={() => navigate("/assigned-tasks")}
+                    onClick={() =>
+                      navigate("/assigned-tasks")
+                    }
                   >
                     View All
                     <ArrowRight size={15} />
@@ -431,7 +473,8 @@ function Dashboard() {
                       }}
                       transition={{
                         duration: 0.4,
-                        delay: 0.5 + index * 0.08,
+                        delay:
+                          0.5 + index * 0.08,
                       }}
                       whileHover={{
                         x: 3,

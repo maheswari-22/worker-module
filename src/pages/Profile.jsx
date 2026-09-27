@@ -1,4 +1,3 @@
-
 import {
   User,
   Mail,
@@ -15,6 +14,8 @@ import {
   Eye,
   EyeOff,
   KeyRound,
+  ShieldCheck,
+  ChevronRight,
 } from "lucide-react";
 
 import { useEffect, useState } from "react";
@@ -93,7 +94,8 @@ function Profile() {
   ========================================= */
 
   useEffect(() => {
-    const savedWorker = localStorage.getItem("workerAccount");
+    const savedWorker =
+      localStorage.getItem("workerAccount");
 
     if (savedWorker) {
       try {
@@ -111,10 +113,6 @@ function Profile() {
       }
     }
 
-    /* -----------------------------------------
-       Load saved worker password
-       ----------------------------------------- */
-
     const savedPassword =
       localStorage.getItem("workerPassword");
 
@@ -128,10 +126,6 @@ function Profile() {
   ========================================= */
 
   useEffect(() => {
-    /* -----------------------------------------
-       Assigned tasks: 0 -> 3
-       ----------------------------------------- */
-
     let assigned = 0;
 
     const assignedTimer = setInterval(() => {
@@ -144,10 +138,6 @@ function Profile() {
 
       setAssignedCount(assigned);
     }, 180);
-
-    /* -----------------------------------------
-       Completed tasks: 0 -> 3
-       ----------------------------------------- */
 
     let completed = 0;
 
@@ -162,10 +152,6 @@ function Profile() {
       setCompletedCount(completed);
     }, 220);
 
-    /* -----------------------------------------
-       Completion rate: 0 -> 100
-       ----------------------------------------- */
-
     let percentage = 0;
 
     const percentageTimer = setInterval(() => {
@@ -178,10 +164,6 @@ function Profile() {
 
       setCompletionRate(percentage);
     }, 25);
-
-    /* -----------------------------------------
-       CLEANUP
-       ----------------------------------------- */
 
     return () => {
       clearInterval(assignedTimer);
@@ -238,10 +220,6 @@ function Profile() {
     setPasswordError("");
     setPasswordSuccess("");
 
-    /* -----------------------------------------
-       Check current password
-       ----------------------------------------- */
-
     if (!currentPassword) {
       setPasswordError(
         "Please enter your current password."
@@ -255,10 +233,6 @@ function Profile() {
       );
       return;
     }
-
-    /* -----------------------------------------
-       Check new password
-       ----------------------------------------- */
 
     if (!newPassword) {
       setPasswordError(
@@ -274,10 +248,6 @@ function Profile() {
       return;
     }
 
-    /* -----------------------------------------
-       Check confirm password
-       ----------------------------------------- */
-
     if (!confirmPassword) {
       setPasswordError(
         "Please confirm your new password."
@@ -292,20 +262,12 @@ function Profile() {
       return;
     }
 
-    /* -----------------------------------------
-       Prevent same password
-       ----------------------------------------- */
-
     if (newPassword === currentPassword) {
       setPasswordError(
         "New password must be different from your current password."
       );
       return;
     }
-
-    /* -----------------------------------------
-       Save new password
-       ----------------------------------------- */
 
     localStorage.setItem(
       "workerPassword",
@@ -378,12 +340,10 @@ function Profile() {
           ========================================= */}
 
           <div className="profile-header">
-            <h1>
-              My Profile
-            </h1>
+            <h1>My Profile</h1>
 
             <p>
-              Worker information and work summary.
+              Manage your worker information and account.
             </p>
           </div>
 
@@ -420,55 +380,6 @@ function Profile() {
                 Active Worker
               </div>
 
-              {/* =====================================
-                  ACCOUNT ACTIONS
-              ===================================== */}
-
-              <div className="profile-account-actions">
-
-                {/* CHANGE PASSWORD */}
-
-                <button
-                  type="button"
-                  className="profile-change-password-button"
-                  onClick={handleOpenChangePassword}
-                >
-                  <LockKeyhole size={17} />
-
-                  <span>
-                    Change Password
-                  </span>
-                </button>
-
-                {/* LOGOUT */}
-
-                <button
-                  type="button"
-                  className="profile-logout-button"
-                  onClick={handleLogout}
-                >
-                  <LogOut size={17} />
-
-                  <span>
-                    Log out
-                  </span>
-                </button>
-
-                {/* DELETE ACCOUNT */}
-
-                <button
-                  type="button"
-                  className="profile-delete-button"
-                  onClick={handleDeleteAccount}
-                >
-                  <Trash2 size={17} />
-
-                  <span>
-                    Delete Account
-                  </span>
-                </button>
-
-              </div>
             </div>
 
             {/* =====================================
@@ -477,9 +388,20 @@ function Profile() {
 
             <div className="profile-information">
 
-              <h3>
-                Worker Information
-              </h3>
+              <div className="profile-information-heading">
+                <div>
+                  <h3>Worker Information</h3>
+
+                  <p>
+                    Your registered account details
+                  </p>
+                </div>
+
+                <div className="profile-information-badge">
+                  <ShieldCheck size={17} />
+                  Verified
+                </div>
+              </div>
 
               {/* NAME */}
 
@@ -489,9 +411,7 @@ function Profile() {
                 </div>
 
                 <div>
-                  <span>
-                    Full Name
-                  </span>
+                  <span>Full Name</span>
 
                   <strong>
                     {worker.name}
@@ -507,9 +427,7 @@ function Profile() {
                 </div>
 
                 <div>
-                  <span>
-                    Worker ID
-                  </span>
+                  <span>Worker ID</span>
 
                   <strong>
                     {worker.workerId}
@@ -525,9 +443,7 @@ function Profile() {
                 </div>
 
                 <div>
-                  <span>
-                    Department
-                  </span>
+                  <span>Department</span>
 
                   <strong>
                     {worker.department}
@@ -543,9 +459,7 @@ function Profile() {
                 </div>
 
                 <div>
-                  <span>
-                    Email
-                  </span>
+                  <span>Email</span>
 
                   <strong>
                     {worker.email}
@@ -561,9 +475,7 @@ function Profile() {
                 </div>
 
                 <div>
-                  <span>
-                    Phone
-                  </span>
+                  <span>Phone</span>
 
                   <strong>
                     {worker.phone}
@@ -579,9 +491,7 @@ function Profile() {
                 </div>
 
                 <div>
-                  <span>
-                    Assigned Area
-                  </span>
+                  <span>Assigned Area</span>
 
                   <strong>
                     {worker.area}
@@ -598,9 +508,13 @@ function Profile() {
 
           <section className="profile-summary">
 
-            {/* ASSIGNED TASKS */}
+            {/* ASSIGNED */}
 
             <div className="profile-summary-card assigned-card">
+              <div className="profile-summary-icon">
+                <Briefcase size={19} />
+              </div>
+
               <strong>
                 {assignedCount}
               </strong>
@@ -610,9 +524,13 @@ function Profile() {
               </span>
             </div>
 
-            {/* COMPLETED TASKS */}
+            {/* COMPLETED */}
 
             <div className="profile-summary-card completed-card">
+              <div className="profile-summary-icon">
+                <CheckCircle2 size={19} />
+              </div>
+
               <strong>
                 {completedCount}
               </strong>
@@ -622,9 +540,13 @@ function Profile() {
               </span>
             </div>
 
-            {/* COMPLETION RATE */}
+            {/* COMPLETION */}
 
             <div className="profile-summary-card progress-card">
+              <div className="profile-summary-icon">
+                <ShieldCheck size={19} />
+              </div>
+
               <strong>
                 {completionRate}%
               </strong>
@@ -635,6 +557,76 @@ function Profile() {
             </div>
 
           </section>
+
+          {/* =========================================
+              PASSWORD & SECURITY
+          ========================================= */}
+
+          <section className="profile-security-card">
+
+            <div className="profile-security-left">
+
+              <div className="profile-security-icon">
+                <LockKeyhole size={22} />
+              </div>
+
+              <div>
+                <h3>
+                  Password & Security
+                </h3>
+
+                <p>
+                  Keep your worker account secure by
+                  updating your password regularly.
+                </p>
+              </div>
+
+            </div>
+
+            <button
+              type="button"
+              className="profile-security-button"
+              onClick={handleOpenChangePassword}
+            >
+              <span>
+                Change Password
+              </span>
+
+              <ChevronRight size={18} />
+            </button>
+
+          </section>
+
+          {/* =========================================
+              ACCOUNT ACTIONS
+          ========================================= */}
+
+          <section className="profile-account-section">
+
+            {/* LOGOUT */}
+
+            <button
+              type="button"
+              className="profile-logout-button"
+              onClick={handleLogout}
+            >
+              <LogOut size={17} />
+              <span>Log out</span>
+            </button>
+
+            {/* DELETE ACCOUNT */}
+
+            <button
+              type="button"
+              className="profile-delete-button"
+              onClick={handleDeleteAccount}
+            >
+              <Trash2 size={17} />
+              <span>Delete Account</span>
+            </button>
+
+          </section>
+
         </main>
 
         {/* =========================================
@@ -657,8 +649,6 @@ function Profile() {
               onClick={(e) => e.stopPropagation()}
             >
 
-              {/* CLOSE BUTTON */}
-
               <button
                 type="button"
                 className="profile-popup-close"
@@ -667,8 +657,6 @@ function Profile() {
               >
                 <X size={18} />
               </button>
-
-              {/* ICON */}
 
               <div className="profile-popup-icon password-popup-icon">
                 <KeyRound size={24} />
@@ -682,16 +670,12 @@ function Profile() {
                 Update your worker account password securely.
               </p>
 
-              {/* ERROR */}
-
               {passwordError && (
                 <div className="profile-password-error">
                   <AlertTriangle size={16} />
                   {passwordError}
                 </div>
               )}
-
-              {/* SUCCESS */}
 
               {passwordSuccess && (
                 <div className="profile-password-success">
@@ -806,6 +790,7 @@ function Profile() {
                   <small>
                     Minimum 6 characters
                   </small>
+
                 </div>
 
                 {/* CONFIRM PASSWORD */}
@@ -859,6 +844,7 @@ function Profile() {
                     </button>
 
                   </div>
+
                 </div>
 
                 {/* BUTTONS */}
@@ -945,6 +931,7 @@ function Profile() {
                 </button>
 
               </div>
+
             </div>
           </div>
         )}
@@ -1005,6 +992,7 @@ function Profile() {
                 </button>
 
               </div>
+
             </div>
           </div>
         )}
